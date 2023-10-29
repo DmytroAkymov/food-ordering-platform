@@ -1,7 +1,13 @@
-import './App.css';
+import React from 'react';
+
+import Header from './components/Layout/Header';
 
 function App() {
-    return <div className="App">Start project</div>;
+    return (
+        <React.Fragment>
+            <Header />
+        </React.Fragment>
+    );
 }
 
 export default App;
