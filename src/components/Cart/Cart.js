@@ -13,7 +13,7 @@ const Cart = () => {
             <div>
                 <div className={styles['cart-items']}>
                     {ctx.cartItems.map((item) => {
-                        return <CartItem item={item} />;
+                        return <CartItem item={item} key={item.id} />;
                     })}
 
                     <div className={styles['total']}>

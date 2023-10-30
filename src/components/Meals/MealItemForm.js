@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './MealItemForm.module.css';
 import Input from './Input';
+import Context from '../context/Context';
 
-const MealItemForm = () => {
+const MealItemForm = (props) => {
+    const ctx = useContext(Context);
 
+    const onSubmitHandler = (event) => {
+        event.preventDefault();
+        ctx.addItemHandler({
+            id: props.item.id,
+            name: props.item.name,
+            price: props.item.price,
+            quontity: 1,
+        });
+    };
 
-  
     return (
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={onSubmitHandler}>
             <Input />
-            <button>Add</button>
+            <button type="submit">Add</button>
         </form>
     );
 };

@@ -9,23 +9,14 @@ import Context from './components/context/Context.js';
 import Cart from './components/Cart/Cart';
 
 function App() {
-    const [cartItems, setCartItems] = useState([
-        {
-            id: 'm3',
-            name: 'Суши с угрем',
-            description: 'Угорь копченый, соус унаги, кунжут',
-            price: 4.99,
-            quontity: 3,
-        },
-        {
-            id: 'm4',
-            name: 'Салат "Поке с лососем"',
-            description:
-                'Рис, лосось, огурец, чука, нори, стружка тунца, соус ореховый',
-            price: 7.99,
-            quontity: 3,
-        },
-    ]);
+    const [cartItems, setCartItems] = useState([]);
+    const [quontityCart, setQuontityCart] = useState(0);
+
+    const addItemHandler = (item) => {
+        setQuontityCart(quontityCart + item.quontity);
+        const newCartItems = [...cartItems, item];
+        setCartItems(newCartItems);
+    };
 
     const [visabilityCart, setVisabilityCart] = useState(false);
     const visabilityCartHandler = (visability) => {
@@ -37,6 +28,8 @@ function App() {
             value={{
                 cartItems: cartItems,
                 visabilityCartHandler: visabilityCartHandler,
+                addItemHandler: addItemHandler,
+                quontityCart: quontityCart,
             }}
         >
             <Header />

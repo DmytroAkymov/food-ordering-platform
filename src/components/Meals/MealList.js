@@ -39,7 +39,7 @@ const MealList = () => {
                 <ul>
                     {DUMMY_MEALS.map((item) => {
                         return (
-                            <li>
+                            <li key={item.id}>
                                 <MealItem item={item} />
                             </li>
                         );
