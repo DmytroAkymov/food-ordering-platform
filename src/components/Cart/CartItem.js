@@ -6,10 +6,12 @@ const CartItem = (props) => {
     return (
         <li className={classes['cart-item']}>
             <div>
-                <h2>Roll Naomi</h2>
+                <h2>{props.item.name}</h2>
                 <div className={classes.summary}>
-                    <span className={classes.price}>$10</span>
-                    <span className={classes.amount}>x 2</span>
+                    <span className={classes.price}>{props.item.price}</span>
+                    <span className={classes.amount}>
+                        {`x ${props.item.quontity}`}
+                    </span>
                 </div>
             </div>
             <div className={classes.actions}>

@@ -1,22 +1,35 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import CartItem from './CartItem';
 import styles from './Cart.module.css';
+import Context from '../context/Context';
 
 import Modal from '../UI/Modal';
 
 const Cart = () => {
+    const ctx = useContext(Context);
+
     return (
         <Modal>
             <div>
                 <div className={styles['cart-items']}>
-                    <CartItem />
+                    {ctx.cartItems.map((item) => {
+                        return <CartItem item={item} />;
+                    })}
+
                     <div className={styles['total']}>
                         <div>Amount</div>
                         <div>$35</div>
                     </div>
 
                     <div className={styles.actions}>
-                        <button className={styles['button--alt']}>Close</button>
+                        <button
+                            className={styles['button--alt']}
+                            onClick={() => {
+                                ctx.visabilityCartHandler(false);
+                            }}
+                        >
+                            Close
+                        </button>
                         <button className={styles['button']}>Order</button>
                     </div>
                 </div>
