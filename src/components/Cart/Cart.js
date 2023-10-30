@@ -18,7 +18,7 @@ const Cart = () => {
 
                     <div className={styles['total']}>
                         <div>Amount</div>
-                        <div>$35</div>
+                        <div>{`$ ${ctx.amountCart}`}</div>
                     </div>
 
                     <div className={styles.actions}>

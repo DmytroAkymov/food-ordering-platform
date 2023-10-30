@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styles from './MealItemForm.module.css';
 import Input from './Input';
 import Context from '../context/Context';
 
 const MealItemForm = (props) => {
     const ctx = useContext(Context);
+    const [quantityInput, setQuantityInput] = useState(1);
 
     const onSubmitHandler = (event) => {
         event.preventDefault();
@@ -12,13 +13,17 @@ const MealItemForm = (props) => {
             id: props.item.id,
             name: props.item.name,
             price: props.item.price,
-            quontity: 1,
+            quantity: parseInt(quantityInput),
         });
     };
 
     return (
         <form className={styles.form} onSubmit={onSubmitHandler}>
-            <Input />
+            <Input
+                item={props.item}
+                setQuantityInput={setQuantityInput}
+                quantityInput={quantityInput}
+            />
             <button type="submit">Add</button>
         </form>
     );

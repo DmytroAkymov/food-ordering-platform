@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './Input.module.css';
 
-const Input = () => {
-    const [quantity, setQuantity] = useState(1);
+const Input = (props) => {
     const quantityInputHandler = (event) => {
-        setQuantity(event.target.value);
+        props.setQuantityInput(event.target.value);
     };
 
     return (
         <div className={styles.input}>
             <label>Quantity</label>
             <input
-                value={quantity}
+                value={props.quantityInput}
                 type="number"
                 min="1"
                 onChange={quantityInputHandler}

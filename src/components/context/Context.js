@@ -2,9 +2,12 @@ import { createContext } from 'react';
 
 const Context = createContext({
     cartItems: [],
-    quontityCart: 0,
+    quantityCart: 0,
     visabilityCartHandler: () => {},
     addItemHandler: () => {},
+    addQuantityToCartHandler: () => {},
+    minusQuantityToCartHandler: () => {},
+    amountCart: 0,
 });
 
 export default Context;

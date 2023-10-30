@@ -16,7 +16,7 @@ const HeaderCartButton = () => {
                 <CartIcon />
             </span>
             <span>Cart</span>
-            <span className={styles.badge}>{ctx.quontityCart}</span>
+            <span className={styles.badge}>{ctx.quantityCart}</span>
         </button>
     );
 };
