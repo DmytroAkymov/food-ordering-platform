@@ -1,9 +1,10 @@
 import React from 'react';
 
 import Header from './components/Layout/Header';
-import Meals from './components/Meals/MealItem';
+
 import PromoText from './components/Meals/PromoText';
 import MealList from './components/Meals/MealList';
+import Cart from './components/Cart/Cart';
 
 function App() {
     return (
@@ -11,6 +12,7 @@ function App() {
             <Header />
             <PromoText />
             <MealList />
+            <Cart />
         </React.Fragment>
     );
 }
