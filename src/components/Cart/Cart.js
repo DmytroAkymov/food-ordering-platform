@@ -21,6 +21,8 @@ const Cart = () => {
                         <div>{`$ ${ctx.amountCart}`}</div>
                     </div>
 
+                    {ctx.cartItems.length === 0 && <p>Cart empty</p>}
+
                     <div className={styles.actions}>
                         <button
                             className={styles['button--alt']}
