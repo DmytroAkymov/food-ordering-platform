@@ -8,11 +8,13 @@ const Input = (props) => {
 
     return (
         <div className={styles.input}>
-            <label>Quantity</label>
+            <label htmlFor={props.id}>Quantity</label>
             <input
+                id={props.id}
                 value={props.quantityInput}
                 type="number"
                 min="1"
+                step="1"
                 onChange={quantityInputHandler}
             ></input>
         </div>

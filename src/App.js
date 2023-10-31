@@ -14,14 +14,25 @@ function App() {
     const [visabilityCart, setVisabilityCart] = useState(false);
     const [amountCart, setAmountCart] = useState(0);
 
+    // useEffect(() => {
+    //     const amountCart = cartItems.map((el) => {
+    //         const price = el.quantity * el.price;
+    //         return price.toFixed(2);
+    //     });
+    //     const sumCart = amountCart.reduce((accumulator, currentValue) => {
+    //         return accumulator + currentValue;
+    //     }, 0);
+    //     setAmountCart(sumCart);
+    // }, [cartItems]);
+
     useEffect(() => {
-        const amountCart = cartItems.map((el) => {
-            return el.quantity * el.price;
-        });
-        const sumCart = amountCart.reduce((accumulator, currentValue) => {
-            return accumulator + currentValue;
+        const sumCart = cartItems.reduce((accumulator, item) => {
+            const price = item.quantity * item.price;
+            const result = accumulator + price;
+            return result >= 0 ? result : 0;
         }, 0);
-        setAmountCart(sumCart);
+
+        setAmountCart(sumCart.toFixed(2));
     }, [cartItems]);
 
     const addQuantityToCartHandler = (id) => {
@@ -35,19 +46,29 @@ function App() {
             return el;
         });
         setCartItems(updatedCartItems);
+        setQuantityCart(quantityCart + 1);
     };
 
     const minusQuantityToCartHandler = (id) => {
         const updatedCartItems = cartItems.map((el) => {
             if (el.id === id) {
-                return {
-                    ...el,
-                    quantity: el.quantity - 1,
-                };
+                const newQuantity = el.quantity - 1;
+                if (newQuantity < 1) {
+                    return null;
+                } else {
+                    return {
+                        ...el,
+                        quantity: newQuantity,
+                    };
+                }
             }
             return el;
         });
-        setCartItems(updatedCartItems);
+
+        const filteredCartItems = updatedCartItems.filter((el) => el !== null);
+
+        setCartItems(filteredCartItems);
+        setQuantityCart(quantityCart - 1);
     };
 
     const visabilityCartHandler = (visability) => {
@@ -57,16 +78,12 @@ function App() {
     const addItemHandler = (item) => {
         setQuantityCart(quantityCart + item.quantity);
 
-        // Check if the item with the same id already exists in cartItems
         const isItemInCart = cartItems.some((el) => el.id === item.id);
 
         if (!isItemInCart) {
-            // If the item is not in cartItems, add it to newCartItems
             const newCartItems = [...cartItems, item];
             setCartItems(newCartItems);
         } else {
-            // If the item is already in cartItems, you can update the quantity or handle it as needed
-            // For example, you might want to increase the quantity of the existing item in the cart.
             const updatedCartItems = cartItems.map((meal) => {
                 if (meal.id === item.id) {
                     return {

@@ -20,6 +20,7 @@ const MealItemForm = (props) => {
     return (
         <form className={styles.form} onSubmit={onSubmitHandler}>
             <Input
+                id={props.item.id}
                 item={props.item}
                 setQuantityInput={setQuantityInput}
                 quantityInput={quantityInput}
