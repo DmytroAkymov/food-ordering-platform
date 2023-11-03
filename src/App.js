@@ -14,17 +14,6 @@ function App() {
     const [visabilityCart, setVisabilityCart] = useState(false);
     const [amountCart, setAmountCart] = useState(0);
 
-    // useEffect(() => {
-    //     const amountCart = cartItems.map((el) => {
-    //         const price = el.quantity * el.price;
-    //         return price.toFixed(2);
-    //     });
-    //     const sumCart = amountCart.reduce((accumulator, currentValue) => {
-    //         return accumulator + currentValue;
-    //     }, 0);
-    //     setAmountCart(sumCart);
-    // }, [cartItems]);
-
     useEffect(() => {
         const sumCart = cartItems.reduce((accumulator, item) => {
             const price = item.quantity * item.price;

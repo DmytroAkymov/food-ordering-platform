@@ -7,6 +7,7 @@ import Modal from '../UI/Modal';
 
 const Cart = () => {
     const ctx = useContext(Context);
+    const hasItems = ctx.cartItems.length > 0;
 
     return (
         <Modal>
@@ -32,7 +33,9 @@ const Cart = () => {
                         >
                             Close
                         </button>
-                        <button className={styles['button']}>Order</button>
+                        {hasItems && (
+                            <button className={styles['button']}>Order</button>
+                        )}
                     </div>
                 </div>
             </div>
